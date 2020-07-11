@@ -16,7 +16,7 @@ SSD Mapviewer의 경우 user application이기 때문에 File LBA와 같은 kern
 fibmap
 -----
 fibmap은 ioctl 함수로써 file의 kernel level 논리적 주소를 얻을 수 있다. 사용법은 terminal에서 사용할 경우
-  ``` c
+  ``` 
   sudo hdparm --fibmap [파일]
   ```
 api로 사용할 경우
