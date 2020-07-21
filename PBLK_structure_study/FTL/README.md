@@ -10,4 +10,17 @@ SSD의 구조는 다음과 같다. SSD는 논리적으로 데이터를 저장하
 
 FTL(Flash Translation layer)
 -----
+FTL은 SSD의 내부에서 작동하는 프로그램으로 SSD의 핵심 펌웨어이다. 앞서 설명 했던 것처럼, SSD는 HDD와는 다른 특징들이 존재한다. 이러한 특징들로 인해서, SSD는 FTL이라는 펌웨어를 이용하여 SSD를 조정한다. FTL이 하는 일은 크게 4가지정도가 있다.
 
+1. 메모리 매핑
+2. Wear Leveling
+3. Garbage Collection
+4. Over Provisioning
+
+먼저, SSD의 플래시 메모리 구조는 여러 개의 flash memory와 통신하는 channel, 하나의 플래시 메모리는 Die로 나누어지고, Die는 plane으로 plane은 block으로 block은 page로 나누어진다. 따라서, 데이터를 저장할 경우에 OS level에서 사용하는 주소방식으로는 SSD에 데이터를 저장할 수가 없다. 따라서, FTL에는 LBA2PPA매핑 테이블이 있어서, OS level에서 사용한 메모리 주소를 SSD에서 사용할 수 있는 주소로 바꿔주는 역할을 한다.
+
+두 번쨰, SSD는 썼다 지웠다 할때마다 각각의 비트를 저장하는 단위인 셀에 extra charge가 되기 때문에 셀의 수명에 한계가 있다. 따라서 SSD의 한 영역만 계속 사용할 경우에 추후에 특정영역만 사용이 불가해지는 상황이 생길 수 있다. FTL은 이러한 상황을 최소화 하기 위해서 block당 write하는 횟수를 모니터링 하여 균등하게 분배될 수 있도록 한다.
+
+세 번째, SSD는 Overwrite가 되지 않고, block단위로 erase가 이루어진다. 따라서, 만약 overwrite를 해야하는 상황이 생긴다면, 해당 block의 데이터중 사용되고 있는 vaild data를 새로운 block에 복사하고, 수정할 page의 내용을 수정한뒤 새로운 block에 넣는 방식을 사용한다. 이 경우에 새로운 block에 write를 하기 때문에 기존의 block은 erase를 해야 재사용이 가능한데, SSD에서는 erase를 바로 진행하지 않고 Garbage Collection이라는 프로세스를 통해서 일괄 삭제하게 한다.
+
+네 번째, 앞서 이야기한 Wear Leveling과 Garbage Collection을 진행하기 위해서는 SSD에 저장 공간이 필요한데, 이 저장 공간을 따로 잡아 놓는 것을 Over Provisioning이라고 한다.
