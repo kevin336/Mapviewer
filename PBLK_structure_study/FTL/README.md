@@ -24,3 +24,5 @@ FTL은 SSD의 내부에서 작동하는 프로그램으로 SSD의 핵심 펌웨�
 세 번째, SSD는 Overwrite가 되지 않고, block단위로 erase가 이루어진다. 따라서, 만약 overwrite를 해야하는 상황이 생긴다면, 해당 block의 데이터중 사용되고 있는 vaild data를 새로운 block에 복사하고, 수정할 page의 내용을 수정한뒤 새로운 block에 넣는 방식을 사용한다. 이 경우에 새로운 block에 write를 하기 때문에 기존의 block은 erase를 해야 재사용이 가능한데, SSD에서는 erase를 바로 진행하지 않고 Garbage Collection이라는 프로세스를 통해서 일괄 삭제하게 한다.
 
 네 번째, 앞서 이야기한 Wear Leveling과 Garbage Collection을 진행하기 위해서는 SSD에 저장 공간이 필요한데, 이 저장 공간을 따로 잡아 놓는 것을 Over Provisioning이라고 한다.
+
+FTL은 이러한 기능들을 수행하기 위해서 별도의 메모리를 SSD내부에 가지고 있다. 메모리 공간에는 LBA2PPA mapping table이나 I/O과정에서 다양한 용도로 사용된다.
