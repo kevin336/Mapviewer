@@ -10,6 +10,6 @@ OCSSD란?
 
 OCSSD Lightnvm Architecture
 -------
-![OCSSD_pblk](./OCSSD_pblk.png)
+<img src="./OCSSD_pblk.png" height="300">
 
 Lightnvm은 사용자가 OCSSD에 접근하기위해서 사용하는 인터페이스이다. OCSSD와 사용자간의 정보교환은 위 그림과 같이 이루어진다. 가장 아래에 하드웨어로 OCSSD가 존재하고, 이와 직접적으로 통신되는 것이 NVMe Device Driver이다. 그 위에 LightNVM Subsystem이 device driver와 통신하고, LightNVM은 pblk와 통신, pblk가 사용자 레벨인 Application level과 통신함으로써 Application에서 OCSSD의 다양한 정보들을 사용할 수 있게 되는 것이다. 
