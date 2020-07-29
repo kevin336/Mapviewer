@@ -2,7 +2,7 @@ OCSSD
 ======
 OCSSD란?
 -----
-![ocssd2.0_architecture](./OCSSD2.0.png)
+<img src="./OCSSD2.0.png" height="300">
 
 일반적인 SSD의 경우에는 SSD내부의 연상장치와 RAM 메모리를 이용해서 FTL이 구동되기 때문에 SSD내부의 자세한 정보들을 OS level에서는 알수가 없다. 하지만, OCSSD는 FTL의 일부정보들을 Host의 RAM메모리에 load하기 때문에 host OS level에서도 SSD의 내부정보를 쉽게 가져올 수 있는 SSD이다.
 
