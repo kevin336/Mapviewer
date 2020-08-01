@@ -45,5 +45,4 @@ wget https://releases.ubuntu.com/18.04/ubuntu-18.04.4-desktop-amd64.iso
 sudo qemu-system-x86_64 -hda ubuntu.img -boot d -cdrom ubuntu-18.04.4-desktop-amd64.iso -m 'memory size(e.g. 8G)' -smp '# of core' -cpu host --enable-kvm -vnc :2
 ```
 
-이후 
-sudo qemu-system-x86_64 -hda ubuntu.img -boot d -cdrom ubuntu-18.04.4-desktop-amd64.iso -m 'memory size(e.g. 8G)' -smp '# of core' -cpu host --enable-kvm -vnc :2
+이후 리미너를 
