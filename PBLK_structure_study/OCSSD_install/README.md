@@ -1,11 +1,11 @@
 OCSSD Install
 ====
-Environment
------
+# Environment
+
 OS : Ubuntu Linux 18.04 LTS
 
-Installation
------
+# Installation
+
 ## 필수 패키지 설치
 
 ```
