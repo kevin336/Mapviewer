@@ -46,3 +46,5 @@ sudo qemu-system-x86_64 -hda ubuntu.img -boot d -cdrom ubuntu-18.04.4-desktop-am
 ```
 
 이후 리미너를 통해서 ubuntu linux 설치를 완료한다.
+
+설치 
