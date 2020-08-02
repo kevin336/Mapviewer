@@ -1,18 +1,18 @@
 OCSSD Install
 ====
-# Environment
+## Environment
 
 OS : Ubuntu Linux 18.04 LTS
 
-# QEMU Installation
+## QEMU Installation
 
-## 필수 패키지 설치
+### 필수 패키지 설치
 
 ```
 sudo apt install libglib2.0-dev libpixman-1-dev build-essential libncurses5 libncurses5-dev libssl-dev bc bison flex libelf-dev
 ```
 
-## qemu 설치
+### qemu 설치
 
 ```
 cd ~
@@ -26,7 +26,7 @@ sudo ln qemu-img /usr/bin
 sudo ln qemu-system-x86_64 /usr/bin
 ```
 
-## Open-Channel 2.0 SSD 설정
+### Open-Channel 2.0 SSD 설정
 
 ```
 cd ~
@@ -38,7 +38,7 @@ qemu-img create -f ocssd -o num_grp=2,num_pu=4,num_chk=60 ocssd.img
 qemu-img create -f qcow2 -o preallocation=full ubuntu.img 40G
 ```
 
-## qemu linux 설정
+### qemu linux 설정
 
 ```
 wget https://releases.ubuntu.com/18.04/ubuntu-18.04.4-desktop-amd64.iso
@@ -47,7 +47,7 @@ sudo qemu-system-x86_64 -hda ubuntu.img -boot d -cdrom ubuntu-18.04.4-desktop-am
 
 이후 리미너를 통해서 ubuntu linux 설치를 완료한다.
 
-## Kernel 컴파일 및 설치
+### Kernel 컴파일 및 설치
 
 kernel 소스파일을 다운로드 합니다. linux에서 제공해주는 kernel을 사용하지 않고, 아래 주소에 있는 OpenChannelSSD에서 제공되는 커널을 사용해야 합니다.
 
@@ -83,7 +83,7 @@ make -j '# of core'
 
 make를 하게 되면 여러가지 옵션을 선택하는 창이 나오는데 전부 enter를 눌러줍니다.
 
-## qemu 실행
+### qemu 실행
 
 다음 명령어로 qemu를 실행시킵니다.
 
@@ -101,8 +101,8 @@ sudo qemu-system-x86_64 \
     -kernel ./linux/arch/x86_64/boot/bzImage -append 'root=/dev/sda1 console=ttr0 nokaslr'
 ```
 
-# QEMU 내부 설정
-## OCSSD 디바이스 설정
+## QEMU 내부 설정
+### OCSSD 디바이스 설정
 
 다음 명령어를 통해 nvme-cli를 설치합니다.
 
