@@ -138,3 +138,5 @@ sudo mkdir /mnt/nvme
 sudo mount /dev/mydevice /mnt/nvme
 sudo chown username:username /mnt/nvme
 ```
+
+출ㅊ : https://blackinkgj.github.io/installation-qemu-nvme/
