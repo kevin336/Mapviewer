@@ -4,7 +4,7 @@ OCSSD Install
 
 OS : Ubuntu Linux 18.04 LTS
 
-# Installation
+# QEMU Installation
 
 ## 필수 패키지 설치
 
@@ -101,8 +101,8 @@ sudo qemu-system-x86_64 \
     -kernel ./linux/arch/x86_64/boot/bzImage -append 'root=/dev/sda1 console=ttr0 nokaslr'
 ```
 
-
-LightNVM의 설치
+# QEMU 내부 설정
+## OCSSD 디바이스 설정
 
 다음 명령어를 통해 nvme-cli를 설치합니다.
 
@@ -113,13 +113,28 @@ cd nvme-cli
 make -j '# of core'
 sudo make install
 ```
-설치 ㅇ
-설치 ㄹㅗ
-설치 ㄹㅏ
-설치 ㄹㅇ
-설치 ㄹㅗ
-설치 ㄹㅏ
-설치 ㄹㅇ
-설치 ㄹㅇ
-설치 ㄹㅓ
-설치 ㄹㅗㅓㅏㄴ완료후
+
+설치 후 아래 명령어를 수행합니다.
+
+```
+sudo nvme lnvm list
+```
+
+수행 시 다음과 같이 ocssd디바이슥 인식이 되어야 합니.
+
+```
+Number of devices: 1
+Device      	Block manager	Version
+nvme0n1     	gennvm      	(1,0,0)
+```
+
+다음 명령어를 실행하여 OCSSD를 OS에 mount합니다.
+
+```
+sudo nvme lnvm init -d nvme0n1
+sudo nvme lnvm create -d nvme0n1 -n mydevice -t pblk -b 0 -e 3
+sudo mkfs.ext4 /dev/mydevice
+sudo mkdir /mnt/nvme
+sudo mount /dev/mydevice /mnt/nvme
+sudo chown username:username /mnt/nvme
+```
