@@ -1,8 +1,12 @@
 #include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<assert.h>
+#include<linux/fs.h>
 
 int main(int argc, char **argv)
 {
-	int fd;
+	int fd, blocksize;
 
 	assert(argv[1] != NULL);
 
@@ -11,6 +15,10 @@ int main(int argc, char **argv)
 		perror("error opening file");
 		return 0;
 	}
+	
+	ioctl(fd, FIGETBSZ, &blocksize);
+
+	printf("%d\n",blocksize);
 
 	
 	fclose(fd);
