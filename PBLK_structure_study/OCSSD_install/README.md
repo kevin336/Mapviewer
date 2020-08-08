@@ -120,7 +120,7 @@ sudo make install
 sudo nvme lnvm list
 ```
 
-수행 시 다음과 같이 ocssd디바이슥 인식이 되어야 합니.
+수행 시 다음과 같이 ocssd디바이스가 인식이 되어야 합니다.
 
 ```
 Number of devices: 1
