@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
 	fstat(fd, &st);
 
-	printf("%d, %d\n",blocksize, st.st_size);
+	printf("%d, %ld\n",blocksize, st.st_size);
 
 	
 	close(fd);
