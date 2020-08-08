@@ -7,6 +7,7 @@
 int main(int argc, char **argv)
 {
 	int fd, blocksize;
+	struct stat st;
 
 	assert(argv[1] != NULL);
 
@@ -16,9 +17,14 @@ int main(int argc, char **argv)
 		return 0;
 	}
 	
-	ioctl(fd, FIGETBSZ, &blocksize);
+	if(ioctl(fd, FIGETBSZ, &blocksize)) {
+		perror("FIBMAP ioctl failed");
+		return 0;
+	}	
 
-	printf("%d\n",blocksize);
+	fstat(fd, &st);
+
+	printf("%d, %d\n",blocksize, st.st_size);
 
 	
 	close(fd);
