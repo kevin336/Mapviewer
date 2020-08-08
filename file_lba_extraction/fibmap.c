@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	printf("%d\n",blocksize);
 
 	
-	fclose(fd);
+	close(fd);
 
 	return 0;
 }
