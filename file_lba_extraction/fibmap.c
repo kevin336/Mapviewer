@@ -6,7 +6,7 @@
 
 int main(int argc, char **argv)
 {
-	int fd, blocksize;
+	int fd, blocksize, blkcnt;
 	struct stat st;
 
 	assert(argv[1] != NULL);
@@ -22,9 +22,15 @@ int main(int argc, char **argv)
 		return 0;
 	}	
 
-	fstat(fd, &st);
+	if(fstat(fd, &st)){
+		perror("fstat error");
+		return 0;
+	}
 
-	printf("%d, %ld\n",blocksize, st.st_size);
+	blkcnt = (st.st_size + blocksize - 1) / blocksize;
+	
+	printf("File %s size %ld blocks %d blocksize %d\n",
+			argv[1], st.st_size, blkcnt, blocksize);
 
 	
 	close(fd);
