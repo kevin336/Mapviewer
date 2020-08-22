@@ -15,16 +15,41 @@ rate_limiter
 * free_user_blocks
 * total_blocks
 * READ_ONCE(pblk->rl.rb_user_active)
+
 write_luns
 ------
+#### All lun information
+* lun pos
+* base ppa channel
+* base ppa lun
+
 gc_state
 ------
+#### gc state
+* gc_enabled
+* gc_active
+
 errors
 ------
 write_buffer
 ------
+#### write buffer state (rb = write buffer)
+* rb->nr_entries : ring buffer entries
+* rb->mem : write offset - points to next writable entry in memeory
+* rb->subm : read offset - points to last entry that has been submitted to the media to be persisted
+* rb->sync : Synced - backpointer that signals the last submitted entry that has been successfully persisted to media REQ_FLUSH & REQ_FUA
+* rb->l2p_update : l2p update point - next entry for which l2p mapping will be updated to contain a device ppa address (instead of a cacheline)
+* atomic_read(&rb->inflight_flush_point) : not served REQ_FLUSH | REQ_FUA
+* rb->flush_point : Sync point - last entry that must be flushed to the media. Used with REQ_FLUSH and REQ_FUA
+* pblk_rb_read_count(rb) : count entry between mem and subm
+* pblk_rb_space(rb) : count entry between mem and sync
+* pblk_rb_flush_point_count(rb) : count entry between flush_point and sync
+* queued_entries
+
 ppa_format
 ------
+#### ppa information
+
 lines
 ------
 lines_info
@@ -37,5 +62,13 @@ write_amp_trip
 ------
 padding_dist
 ------
+
+
 stats
 ------
+* read_failed
+* read_high_ecc
+* read_empty
+* read_failed_gc
+* write_failed
+* erase_failed
