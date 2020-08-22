@@ -31,3 +31,16 @@ api로 사용할 경우
   ioctl(fd, FIBMAP, &block_p)
   ```
   
+fibmap.c 사용법
+---------------
+compile
+
+```
+gcc -o fibmap fibmap.c
+```
+
+run
+
+```
+sudo ./fibmap [file_path]
+```
