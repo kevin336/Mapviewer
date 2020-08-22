@@ -6,7 +6,7 @@
 
 int main(int argc, char **argv)
 {
-	int fd, blocksize, blkcnt;
+	int fd, i, blocksize, blkcnt, block;
 	struct stat st;
 
 	assert(argv[1] != NULL);
@@ -32,6 +32,13 @@ int main(int argc, char **argv)
 	printf("File %s size %ld blocks %d blocksize %d\n",
 			argv[1], st.st_size, blkcnt, blocksize);
 
+	for(i=0;i<blkcnt;i++){
+		block = i;
+		if(ioctl(fd, FIBMAP, &block)){
+			perror("FIBMAP ioctl failed");
+		}
+		printf("%3d %10d\n", i, block);
+	}
 	
 	close(fd);
 
