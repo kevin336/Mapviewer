@@ -1,6 +1,6 @@
 SYSFS
 =======
-rate_limiter
+1.rate_limiter
 ------
 #### write buffer information
 * rb_user_cnt
@@ -16,22 +16,22 @@ rate_limiter
 * total_blocks
 * READ_ONCE(pblk->rl.rb_user_active)
 
-write_luns
+2.write_luns
 ------
 #### All lun information
 * lun pos
 * base ppa channel
 * base ppa lun
 
-gc_state
+3.gc_state
 ------
 #### gc state
 * gc_enabled
 * gc_active
 
-errors
+4.errors
 ------
-write_buffer
+5.write_buffer
 ------
 #### write buffer state (rb = write buffer)
 * rb->nr_entries : ring buffer entries
@@ -46,25 +46,25 @@ write_buffer
 * pblk_rb_flush_point_count(rb) : count entry between flush_point and sync
 * queued_entries
 
-ppa_format
+6.ppa_format
 ------
 #### ppa information
 
-lines
+7.lines
 ------
-lines_info
+8.lines_info
 ------
-max_sec_per_write
+9.max_sec_per_write
 ------
-write_amp_mileage
+10.write_amp_mileage
 ------
-write_amp_trip
+11.write_amp_trip
 ------
-padding_dist
+12.padding_dist
 ------
 
 
-stats
+13.stats
 ------
 * read_failed
 * read_high_ecc
