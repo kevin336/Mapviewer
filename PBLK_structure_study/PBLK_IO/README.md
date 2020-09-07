@@ -13,3 +13,8 @@ Write명령이 User로 부터 요청되면, Ring Write Buffer에 차례대로 Wr
 Ring Write Buffer에서 OCSSD로 Write를 할 때는 우선, 요청된 lba와 실제로 write할 ppa의 매핑정보를 l2p table에 기록을 하고, OCSSD metadata에 OCSSD의 공간 사용정보를 기록한 후에 write 하게 된다.
 
 ### Ring Write Buffer
+Ring Write Buffer를 관리하는데는 총 4개의 포인터가 사용된다.
+1. mem: write를 할 pointer
+2. subm: persisted 한 데이터의 pointer
+3. sync: 마지막으로 submit된 곳
+4. flushpoint: flush를 해야할 마지막 pointer
