@@ -21,16 +21,13 @@ SYSFS
 * base ppa channel
 * base ppa lun
 
-3.gc_state
-------
+## 3.gc_state
 #### gc state
 * gc_enabled
 * gc_active
 
-4.errors
-------
-5.write_buffer
-------
+## 4.errors
+## 5.write_buffer
 #### write buffer state (rb = write buffer)
 * rb->nr_entries : ring buffer entries
 * rb->mem : write offset - points to next writable entry in memeory
@@ -44,26 +41,16 @@ SYSFS
 * pblk_rb_flush_point_count(rb) : count entry between flush_point and sync
 * queued_entries
 
-6.ppa_format
-------
+## 6.ppa_format
 #### ppa information
 
-7.lines
-------
-8.lines_info
-------
-9.max_sec_per_write
-------
-10.write_amp_mileage
-------
-11.write_amp_trip
-------
-12.padding_dist
-------
-
-
-13.stats
-------
+## 7.lines
+## 8.lines_info
+## 9.max_sec_per_write
+## 10.write_amp_mileage
+## 11.write_amp_trip
+## 12.padding_dist
+## 13.stats
 * read_failed
 * read_high_ecc
 * read_empty
