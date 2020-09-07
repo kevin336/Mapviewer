@@ -1,7 +1,6 @@
 SYSFS
 =======
-1. rate_limiter
-------
+## 1. rate_limiter
 #### write buffer information
 * rb_user_cnt
 * rb_user_max
@@ -16,8 +15,7 @@ SYSFS
 * total_blocks
 * READ_ONCE(pblk->rl.rb_user_active)
 
-2.write_luns
-------
+## 2.write_luns
 #### All lun information
 * lun pos
 * base ppa channel
