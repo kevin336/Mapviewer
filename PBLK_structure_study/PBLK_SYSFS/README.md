@@ -1,6 +1,6 @@
 SYSFS
 =======
-1.rate_limiter
+1. rate_limiter
 ------
 #### write buffer information
 * rb_user_cnt
